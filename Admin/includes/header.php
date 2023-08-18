@@ -1,9 +1,20 @@
+<?php 
+    include '../controllers/users.php';
+
+    if(isset($_SESSION['id'])){
+        $user = selectOne('users', ['id'=> $_SESSION['id']]);
+    }else{
+        header('location:../login.php');
+    }
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DashBoard - agriPlanner</title>
+    <title>Dashboard - agriPlanner</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.css"  rel="stylesheet" />
@@ -11,10 +22,11 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="bg-gray-200">
+<?php include '../helpers/notification.php' ?>
     <div class="flex flex-col md:flex-row p-4 gap-4">
         <nav class="hidden md:flex flex-col w-1/6 bg-white rounded-lg h-fit px-4 pb-8 pt-4 lg:sticky md:top-4">
             <a href="dashboard.php" class="flex p-2 mb-4">
-                <img src="images/logo.png" class="w-full" alt="">
+                <img src="../images/logo.png" class="w-full" alt="">
             </a>
 
             <hr class="border-1 border-gray-600 rounded-xl mb-8">
@@ -66,7 +78,7 @@
             </div>
 
             <div class="flex flex-col px-4 mb-4">
-                <a href="#" class="text-red-500 text-xl"><i class="fa fa-sign-out"></i> Logout</a>
+                <a href="../logout.php" class="text-red-500 text-xl"><i class="fa fa-sign-out"></i> Logout</a>
             </div>
             <hr class="w-full border-1 border-green-900 rounded-full">
             <div class="flex w-full py-4">
@@ -101,7 +113,7 @@
                 <a href="#" class="px-4  text-lg mb-4 py-2 hover:bg-green-900 hover:text-white rounded-lg"><i class="fa fa-cogs"></i>  Settings</a>
                 <hr class="border border-white rounded-full">
                 <div class="flex flex-col px-4 my-4">
-                    <a href="../controllers/logout.php" class="text-red-500 text-xl"><i class="fa fa-sign-out"></i> Logout</a>
+                    <a href="../logout.php" class="text-red-500 text-xl"><i class="fa fa-sign-out"></i> Logout</a>
                 </div>
             </ul>
         </div>
@@ -116,118 +128,7 @@
                 <a href="#" class="flex p-2">
                     <img src="https://media.licdn.com/dms/image/C5103AQFl656k2-DwOg/profile-displayphoto-shrink_800_800/0/1517034956958?e=2147483647&v=beta&t=6H_aZri3qcbtlgwTyTKBceuyTEPYW43xGViq5UL4J-w" alt="" class="w-8 h-8 rounded-full">
                     <div class="hidden md:flex flex-col px-4">
-                        <h4 class="text-lg  font-bold uppercase text-white">Kato Emmanuel</h4>
+                        <h4 class="text-lg  font-bold uppercase text-white"><?php echo $user['fname']." ".$user['lname'];?></h4>
                     </div>
                 </a>
             </div>
-
-
-            <!-- the first charts(squares) -->
-            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2 py-4">
-                <!-- Todays expense -->
-                <div class="flex flex-col bg-white rounded-lg shadow-lg p-4 w-80">
-                    <h2 class="text-xl text-green-500 font-bold text-center underline">Todays Expense</h2>
-                    <div class="flex items-center justify-between py-4">
-                        <h3 class="text-lg font-bold pl-8">UGX 30000/= </h3>
-                        <i class="fa fa-pie-chart text-3xl text-green-500"></i>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <i class="fa fa-long-arrow-up text-3xl text-red-500"></i>
-                        <h3 class="text-lg "> 10% from Yesterday</h3>
-                    </div>
-                </div>
-                <div class="flex flex-col bg-white rounded-lg shadow-lg p-4 w-80">
-                    <h2 class="text-xl text-green-500 font-bold text-center underline">This Week's Expense</h2>
-                    <div class="flex items-center justify-between py-4">
-                        <h3 class="text-lg font-bold pl-8">UGX 30000/= </h3>
-                        <i class="fa fa-pie-chart text-3xl text-green-500"></i>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <i class="fa fa-long-arrow-down text-3xl text-green-500"></i>
-                        <h3 class="text-lg "> 10% from Last Week</h3>
-                    </div>
-                </div>
-                <div class="flex flex-col items-center bg-white rounded-lg shadow-lg p-4 w-80">
-                    <h2 class="text-xl text-green-500 font-bold text-center underline">This Month's Expense</h2>
-                    <div class="flex items-center justify-between py-4">
-                        <h3 class="text-lg font-bold pl-8">UGX 30000/= </h3>
-                        <i class="fa fa-line-chart text-3xl text-orange-500"></i>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <i class="fa fa-long-arrow-up text-3xl text-red-500"></i>
-                        <h3 class="text-lg "> 10% from Last Month</h3>
-                    </div>
-                </div>
-                <div class="flex flex-col bg-white rounded-lg shadow-lg p-4 w-80">
-                    <h2 class="text-xl text-green-500 font-bold text-center underline">This Year's Expense</h2>
-                    <div class="flex items-center justify-between py-4">
-                        <h3 class="text-lg font-bold pl-8">UGX 30000/= </h3>
-                        <i class="fa fa-bar-chart text-3xl text-blue-500"></i>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <i class="fa fa-long-arrow-down text-3xl text-green-500"></i>
-                        <h3 class="text-lg "> 10% from Last Year</h3>
-                    </div>
-                </div>
-            </div>
-            <!-- charts container -->
-            <div class="flex flex-col items-center md:flex-row gap-2 mb-2">
-                <div class="mx-auto overflow-hidden p-4 bg-white rounded-lg shadow">
-                    <span class="underline mb-2 font-semibold">Last Week expense per Department</span>
-                    <canvas
-                      data-te-chart="doughnut"
-                      data-te-dataset-label="Traffic"
-                      data-te-labels="['Main farm', 'Gulu farm' , 'Masindi farm']"
-                      data-te-dataset-data="[20000, 30000, 15000]"
-                      data-te-dataset-background-color="['rgb(255, 0, 0)', 'rgb(0, 102, 255)', 'rgb(0, 204, 0)']"
-                       class=" ">
-                    </canvas>
-                </div>
-
-                <div class="mx-auto w-84 md:w-auto overflow-hidden p-4 bg-white rounded-lg shadow">
-                    <span class="underline mb-2 font-semibold">last Year's expense per Month</span>
-                    <canvas id="monthlyChart" height="300" class="w-84 md:w-96"></canvas>
-                </div>
-                <div class="mx-auto w-84 md:w-auto overflow-hidden p-4 bg-white rounded-lg shadow">
-                    <span class="underline mb-2 font-semibold">last Year's expense per Month</span>
-                    <canvas id="monthlChart" height="300" class="w-84 md:w-96"></canvas>
-                </div>
-            </div>
-
-            <!-- last Activity table -->
-            <div class="bg-white p-2 rounded-lg shadow md:w-1/2">
-                <span class="font-bold underline">Last Activities</span>
-                <div class="flex flex-col gap-2">
-                    <div class="flex justify-between items-center p-2 bg-red-100 rounded-lg">
-                        <i class="fa fa-bell text-green-500"></i>
-                        <span>The Admin Approved budget for Week 4 submiited by Elias (Main farm)</span>
-                        <span>Today at 4:30 PM</span>
-                    </div>
-                    <div class="flex justify-between items-center p-2 bg-green-100 rounded-lg">
-                        <i class="fa fa-bell text-green-500"></i>
-                        <span>You Approved budget for Week 4 submiited by Elias (Main farm)</span>
-                        <span>Today at 4:30 PM</span>
-                    </div>
-                    <div class="flex justify-between items-center p-2 bg-blue-100 rounded-lg">
-                        <i class="fa fa-bell text-green-500"></i>
-                        <span>Elias Muhoozi (main farm ) Submitted Budget for week 4 for Approval.</span>
-                        <span>Today at 4:30 PM</span>
-                    </div>
-
-                    <!-- pagination -->
-                    <div class="flex justify-end gap-2">
-                        <button class="bg-blue-500 text-white rounded-lg px-2">Previous</button>
-                        <button class="bg-blue-500 text-white rounded-lg px-2">next</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
-
-    </script>
-    <script src="script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
-</body>
-</html>

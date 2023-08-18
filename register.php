@@ -1,9 +1,13 @@
+<?php
+    include 'controllers/users.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DashBoard - agriPlanner</title>
+    <title>Sign Up - agriPlanner</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.css"  rel="stylesheet" />
@@ -30,51 +34,46 @@
                 <h2 class="text-2xl font-bold text-green-600 text-left mb-5">
                 Sign Up
                 </h2>
-                <form action="" class="w-full ">
+                <form action="register.php" class="w-full" method="post">
                     <div id="input" class="flex flex-col w-full my-5 text-left">
                         <label for="username" class="text-gray-500 mb-2">First name</label>
-                        <input type="email" name="fname" placeholder="Please enter Your first name" class="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"/>
+                        <input type="text" name="fname" value="<?php echo $fname ?>" placeholder="Please enter Your first name" class="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"/>
+                        <span class="text-red-500 text-sm px-4">
+                            <?php if(!empty($errors['fname'])){ echo $errors['fname'];}?>
+                        </span>
                     </div>
+                    
                     <div id="input" class="flex flex-col w-full my-5 text-left">
                         <label for="password" class="text-gray-500 mb-2">Last name</label>
-                        <input type="text" name="lname" placeholder="Please enter your last name" class="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"/>
+                        <input type="text" name="lname" value="<?php echo $lname ?>" placeholder="Please enter your last name" class="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"/>
+                        <span class="text-red-500 text-sm px-4">
+                            <?php if(!empty($errors['lname'])){ echo $errors['lname'];}?>
+                        </span>
                     </div>
                     <div id="input" class="flex flex-col w-full my-5 text-left">
                         <label for="password" class="text-gray-500 mb-2">Email</label>
-                        <input type="email" name="email" placeholder="Enter your email" class="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"/>
+                        <input type="email" name="email" value="<?php echo $email ?>" placeholder="Enter your email" class="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"/>
+                        <span class="text-red-500 text-sm px-4">
+                            <?php if(!empty($errors['email'])){ echo $errors['email'];}?>
+                        </span>
                     </div>
                     <div id="input" class="flex flex-col w-full my-5 text-left">
                         <label for="password" class="text-gray-500 mb-2">Password</label>
-                        <input type="password" name="password" placeholder="Please enter your password" class="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"/>
+                        <input type="password" name="password" value="<?php echo $pass ?>" placeholder="Please enter your password" class="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"/>
+                        <span class="text-red-500 text-sm px-4">
+                            <?php if(!empty($errors['password'])){ echo $errors['password'];}?>
+                        </span>
                     </div>
                     <div id="input" class="flex flex-col w-full my-5 text-left">
                         <label for="password" class="text-gray-500 mb-2">Confirm Password</label>
-                        <input type="password" name="confirmPassword" placeholder="confirm your password" class="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"/>
+                        <input type="password" name="confirmPassword" value="<?php echo $cPass ?>" placeholder="confirm your password" class="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"/>
+                        <span class="text-red-500 text-sm px-4">
+                            <?php if(!empty($errors['cPass'])){ echo $errors['cPass'];}?>
+                        </span>
                     </div>
                     <div id="button" class="flex flex-col w-full my-5">
-                        <button
-                        type="button"
-                        class="w-full py-4 bg-green-600 rounded-lg text-green-100"
-                        >
-                        <div class="flex flex-row items-center justify-center">
-                            <div class="mr-2">
-                            <svg
-                                class="w-6 h-6"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
-                                ></path>
-                            </svg>
-                            </div>
-                            <div class="font-bold">Register</div>
-                        </div>
+                        <button name="regBtn"  type="submit" class="w-full py-2 bg-green-600 rounded-lg text-green-100 font-bold text-lg">
+                            Register
                         </button>
                         <div class="flex justify-evenly mt-5">
                         <a href="#" class="w-full text-center font-medium text-blue-500">Have account, login up</a>
