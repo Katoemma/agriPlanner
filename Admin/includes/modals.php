@@ -1,6 +1,6 @@
-    <!-- Add New Employee Form -->
+<!-- New farm  modal-->
 
-<div id="farmModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+<div id="farmModal" tabindex="-1" aria-hidden="true" class="hidden fixed flex top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full bg-black/70">
     <div class="relative w-full max-w-md max-h-full">
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow rounded-lg">
@@ -17,19 +17,28 @@
                 <form action="farms.php" method="post">
                     <label class="block mb-2">
                         <span class="text-sm">Farm Name:</span>
-                        <input type="text" name="name" class="border rounded w-full py-1 px-2 mt-1">
+                        <input type="text" name="name" value="<?php echo $name ?>" class="border rounded w-full py-1 px-2 mt-1">
+                        <?php if(!empty($errors['farmName'])):?>
+                            <span class="text-red-500 text-sm"><?php echo $errors['farmName'] ?></span>
+                        <?php endif;?>
                     </label>
                     <input type="hidden" name="admin" value="<?php echo $user['id'];?>" class="border rounded w-full py-1 px-2 mt-1">
                     <label class="block mb-2">
                         <span class="text-sm">Location:</span>
-                        <input type="text" name="location" class="border rounded w-full py-1 px-2 mt-1">
+                        <input type="text" name="location" value="<?php echo $location ?>" class="border rounded w-full py-1 px-2 mt-1">
+                        <?php if(!empty($errors['location'])):?>
+                            <span class="text-red-500 text-sm"><?php echo $errors['location'] ?></span>
+                        <?php endif;?>
                     </label>
                     <label class="block mb-2">
                         <span class="text-sm">Total Area:</span>
-                        <input type="text" name="position" class="border rounded w-full py-1 px-2 mt-1">
+                        <input type="text" name="acres" value="<?php echo $area ?>" class="border rounded w-full py-1 px-2 mt-1">
+                        <?php if(!empty($errors['acres'])):?>
+                            <span class="text-red-500 text-sm"><?php echo $errors['area'] ?></span>
+                        <?php endif;?>
                     </label>
             
-                    <button name="addFarm" class="bg-green-500 text-white rounded px-4 py-2 mt-6 w-full">Add Employee</button>
+                    <button name="addFarm" class="bg-green-500 text-white rounded px-4 py-2 mt-6 w-full">Add Farm</button>
                 </form>
             </div>
         </div>

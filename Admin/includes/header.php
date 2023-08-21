@@ -112,7 +112,7 @@
         <!-- main content -->
         <div class="md:w-5/6 rounded-lg h-max">
              <!-- upper bar -->
-            <div class="fixed md:relative top-0 left-0 flex justify-between md:justify-end items-center w-full rounded-lg  bg-green-600 shadow p-2 md:sticky md:top-4 ">
+            <div class="hidden fixed md:relative top-0 left-0 flex justify-between md:justify-end items-center w-full rounded-lg  bg-green-600 shadow p-2 md:sticky md:top-4 ">
                 <!-- mobile menu button -->
                 <i class="fa fa-bars text-2xl text-white pl-4 lg:hidden" id="openBtn" onclick="openM()"></i>
                 <i class="fa fa-times-circle text-2xl text-white pl-4 hidden   lg:hidden" id="closeBtn" onclick="closeM()"></i>
