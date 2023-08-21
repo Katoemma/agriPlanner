@@ -14,7 +14,6 @@
     //adding farm
     if (isset($_POST['addFarm'])) {
         $errors = validateFarm($_POST);
-        json_encode(array('errors' => $errors));
         $jsonErrors = json_encode(array('errors' => $errors));
 
         if(count($errors)== 0){

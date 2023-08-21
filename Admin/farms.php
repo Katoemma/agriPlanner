@@ -15,7 +15,7 @@
       <h3 class="text-lg font-semibold mb-2"><?php echo $farm['name'];?></h3>
       <p class="text-sm text-gray-600 mb-2">Location: <?php echo $farm['location'];?></p>
       <p class="text-sm text-gray-600 mb-2">Total Area: <?php echo $farm['acres'];?></p>
-      <a href="farm.php?farm=<?php echo $farm['token'];?>" class="bg-blue-500 text-white rounded px-2 py-1">View Details</a>
+      <a href="farm.php?farm=<?php echo $farm['token'];?>" class="bg-green-600 text-white rounded px-4 py-2">View Details</a>
     </div>
     <?php endforeach;?>
   </div>
