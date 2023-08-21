@@ -1,14 +1,4 @@
-<?php 
-    include '../controllers/users.php';
-
-    if(isset($_SESSION['id'])){
-        $user = selectOne('users', ['id'=> $_SESSION['id']]);
-    }else{
-        header('location:../login.php');
-    }
-    
-?>
-
+<?php ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,14 +15,15 @@
 <?php include '../helpers/notification.php' ?>
     <div class="flex flex-col md:flex-row p-4 gap-4">
         <nav class="hidden md:flex flex-col w-1/6 bg-white rounded-lg h-fit px-4 pb-8 pt-4 lg:sticky md:top-4">
-            <a href="dashboard.php" class="flex p-2 mb-4">
+            <a href="index.php" class="flex p-2 mb-4">
                 <img src="../images/logo.png" class="w-full" alt="">
             </a>
 
             <hr class="border-1 border-gray-600 rounded-xl mb-8">
             <div class="flex flex-col mt-8 mb-16">
-                <a href="" class="px-4 text-lg mb-4 py-2 hover:bg-green-900 hover:text-white rounded-lg border-t">
+                <a href="index.php" class="px-4 text-lg mb-4 py-2 hover:bg-green-900 hover:text-white rounded-lg border-t">
                 <i class="fa fa-th-large"></i> Dashboard</a>
+                <a href="farms.php" class="px-4  text-lg mb-4 py-2 hover:bg-green-900 hover:text-white rounded-lg border-t"><i class="fa fa-first-order"></i> Farms</a>
 
                 <div id="accordion-collapse" data-accordion="collapse">
                     <h2 id="accordion-collapse-heading-1" class="text-black">
@@ -45,7 +36,7 @@
                     </h2>
                     <div id="accordion-collapse-body-1" class="hidden" aria-labelledby="accordion-collapse-heading-1">
                         <div class="flex flex-col p-2 bg-gray-100">
-                            <a href="dash_budgets.php" class="px-4  text-lg mb-4 py-2 bg-blue-500 text-white rounded-lg"><i class="fa fa-check"></i> Approved Budgets</a>
+                            <a href="crop.php" class="px-4  text-lg mb-4 py-2 bg-blue-500 text-white rounded-lg"><i class="fa fa-check"></i> Approved Budgets</a>
                             <a href="dash_budgets.php" class="px-4 text-lg mb-4 py-2 bg-red-500 text-white rounded-lg"><i class="fa fa-spinner"></i> Pending Budgets</a>
                         </div>
                     </div>
@@ -55,7 +46,7 @@
                 <a href="dash_items.php" class="px-4  text-lg mb-4 py-2 hover:bg-green-900 hover:text-white rounded-lg border-t"><i class="fa fa-list-alt"></i> Livestock Management</a>
                 <a href="#" class="px-4  text-lg mb-4 py-2 hover:bg-green-900 hover:text-white rounded-lg border-t"><i class="fa fa-globe"></i> Equipment Tracking</a>
                 <a href="dash_users.php" class="px-4  text-lg mb-4 py-2 hover:bg-green-900 hover:text-white rounded-lg border-t"><i class="fa fa-users"></i>Finances</a>
-                <a href="dash_users.php" class="px-4  text-lg mb-4 py-2 hover:bg-green-900 hover:text-white rounded-lg border-t"><i class="fa fa-briefcase"></i>Jobs</a>
+                <a href="employees.php" class="px-4  text-lg mb-4 py-2 hover:bg-green-900 hover:text-white rounded-lg border-t"><i class="fa fa-briefcase"></i>Jobs</a>
                 
                 <div id="accordion-collapse" data-accordion="collapse">
                     <h2 id="accordion-collapse-reports1" class="text-black">

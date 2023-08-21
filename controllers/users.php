@@ -54,5 +54,8 @@
                 header('location:Admin/index.php');
                 exit();
             }
+        }else{
+            $email = $_POST['email'];
+            $pass = $_POST['password'];
         }
     }

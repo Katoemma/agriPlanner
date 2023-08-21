@@ -1,5 +1,5 @@
 <?php
-    $fnameError = "";
+
     function validateRegister($user){
         $errors = array();
 
@@ -36,7 +36,7 @@
         $errors = array();
     
         // Validate email and password inputs
-        if (empty($_POST['email'])) {
+        if (strlen($_POST['email']) < 1) {
             $errors['email'] = 'Email is required!';
         }
         if (empty($_POST['password'])) {
@@ -46,13 +46,13 @@
         // Check if user with given email exists
         $existingUser = selectOne('users', ['email' => $_POST['email']]);
     
-        if (!$existingUser) {
+        if (!$existingUser && !empty($_POST['email'])) {
             $errors['email'] = 'Email not found in system!';
-        } else {
+        } elseif($existingUser){
             $pass = $existingUser['password'];
             $passverify = password_verify($_POST['password'], $pass);
     
-            if (!$passverify) {
+            if (!$passverify && !empty($_POST['password'])) {
                 $errors['password'] = 'Incorrect Password entered !';
             }
         }

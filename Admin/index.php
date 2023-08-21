@@ -1,3 +1,5 @@
+<?php include '../controllers/users.php'; ?>
+<?php include 'includes/session.php' ?>
 <?php include 'includes/header.php' ?>
 <!-- the first charts(squares) -->
 <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2 py-4">

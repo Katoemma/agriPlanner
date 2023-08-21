@@ -38,14 +38,14 @@
                 <form action="login.php" method="post" class="w-full ">
                     <div id="input" class="flex flex-col w-full my-5 text-left">
                         <label for="username" class="text-gray-500 mb-2">Email</label>
-                        <input type="email" name="email" placeholder="Please enter Your Email" class="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"/>
+                        <input type="email" name="email" value="<?php echo $email?>" placeholder="Please enter Your Email" class="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"/>
                         <span class="text-red-500 text-sm px-4">
                             <?php if(!empty($errors['email'])){ echo $errors['email'];}?>
                         </span>
                     </div>
                     <div id="input" class="flex flex-col w-full my-5 text-left">
                         <label for="password" class="text-gray-500 mb-2">Password</label>
-                        <input type="password" name="password" placeholder="Please enter your password" class="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"/>
+                        <input type="password" name="password" value="<?php echo $pass ?>" placeholder="Please enter your password" class="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"/>
                         <span class="text-red-500 text-sm px-4">
                             <?php if(!empty($errors['password'])){ echo $errors['password'];}?>
                         </span>
