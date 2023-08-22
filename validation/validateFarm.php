@@ -19,3 +19,21 @@
 
         return $errors;
     }
+    function validateField($farm){
+        $errors = array();
+
+        if(empty($_POST['name'])){
+            $errors['fieldName'] = "Field name is required !";
+        }
+        
+        if(empty($_POST['area'])){
+            $errors['area'] = "Field Area is required !";
+        }
+
+        $nameExists = selectOne('fields', ['name'=>$_POST['name']]);
+        if($nameExists){
+            $errors['farmName'] = "Field name already exists";
+        }
+
+        return $errors;
+    }

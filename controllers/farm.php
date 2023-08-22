@@ -9,12 +9,14 @@
     $name = "";
     $location = "";
     $area = "";
+    $addFarmErrors="";
+    $addFieldErrors="";
 
 
     //adding farm
     if (isset($_POST['addFarm'])) {
         $errors = validateFarm($_POST);
-        $jsonErrors = json_encode(array('errors' => $errors));
+        $addFarmErrors = json_encode(array('errors' => $errors));
 
         if(count($errors)== 0){
             unset($_POST['addFarm']);
@@ -32,11 +34,28 @@
         else{
             $name = $_POST['name'];
             $location = $_POST['location'];
-            $area = $_POST['area'];
+            $area = $_POST['acres'];
         }
     }
 
+    //get method to view a single farm.
     if(isset($_GET['farm'])){
         $token = $_GET['farm'];
+    }
 
+    if(isset($_POST['addField'])){
+        $errors = validateField($_POST);
+
+        $addFieldErrors = json_encode(array('errors'=> $errors));
+
+        if(count($errors) == 0){
+            unset($_POST['addField']);
+
+            $post = create('fields', $_POST);
+            $_SESSION['message'] = $_POST['name'].' successfully registered' ;
+            $_SESSION['description'] = 'Welcome Back Our Esteemed User';
+            $_SESSION['type'] = 'bg-green-500';
+            header('location:' . $_SERVER['HTTP_REFERER']);
+            exit();
+        }
     }
