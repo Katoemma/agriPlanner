@@ -76,7 +76,7 @@
                             Register
                         </button>
                         <div class="flex justify-evenly mt-5">
-                        <a href="#" class="w-full text-center font-medium text-blue-500">Have account, login up</a>
+                        <a href="login.php" class="w-full text-center font-medium text-blue-500">Have account, login up</a>
                         </div>
                     </div>
                 </form>

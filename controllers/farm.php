@@ -57,5 +57,8 @@
             $_SESSION['type'] = 'bg-green-500';
             header('location:' . $_SERVER['HTTP_REFERER']);
             exit();
+        } else{
+            $name = $_POST['name'];
+            $area = $_POST['area'];
         }
     }

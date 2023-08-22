@@ -1,10 +1,21 @@
 <?php include '../controllers/farm.php'; ?>
 <?php include 'includes/session.php' ?>
-<?php include 'includes/header.php';?>
-<?php $farmToken = $_GET['farm'];
+<?php 
+  if(!isset($_GET['farm'])){
+    header('location:../login.php');
+    exit();
+  }
+
+  $farmToken = $_GET['farm'];
   $farm = selectOne('farm',['token'=> $farmToken]);
+  if($farm['admin'] != $user['id']){
+    header('location:farms.php');
+  }
   $fields = selectAll('fields',['farm'=> $farm['id']]);
+
 ?>
+<?php include 'includes/header.php';?>
+
 <div class="p-6">
   <h2 class="text-2xl font-semibold mb-4">Farm Details - <?php echo $farm['name'] ?></h2>
   
