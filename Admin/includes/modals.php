@@ -1,6 +1,6 @@
 <!-- New farm  modal-->
 
-<div id="farmModal" tabindex="-2" aria-hidden="true" class="hidden fixed  flex justify-center top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full bg-black/40">
+<div id="farmModal" tabindex="-2" aria-hidden="true" class="hidden fixed  flex justify-center top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full bg-black/70">
     <div class="relative flex flex-col justify-center w-full max-w-md max-h-full">
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow rounded-lg">
@@ -47,7 +47,7 @@
 
 
 <!-- add field modal -->
-<div id="fieldModal" tabindex="-1" aria-hidden="true" class="hidden fixed flex justify-center top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full bg-black/40">
+<div id="fieldModal" tabindex="-1" aria-hidden="true" class="hidden fixed flex justify-center top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full bg-black/70">
     <div class="relative w-full flex flex-col justify-center max-w-md max-h-full">
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow rounded-lg">
