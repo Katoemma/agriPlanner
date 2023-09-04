@@ -19,6 +19,7 @@
         if (count($errors) === 0) {
             unset($_POST['regBtn'], $_POST['confirmPassword']);
             $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            $_POST['type'] = "FA";
 
             $user = create($AdminTable,$_POST);
 

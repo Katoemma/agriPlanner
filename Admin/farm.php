@@ -17,6 +17,7 @@
 <?php include 'includes/header.php';?>
 
 <div class="p-6">
+  <button id="backButton" class="text-white mb-2 bg-red-600 px-4 py-1"> <i class="fa fa-long-arrow-left"></i> Back</button>
   <h2 class="text-2xl font-semibold mb-4">Farm Details - <?php echo $farm['name'] ?></h2>
   
   <!-- Farm Information -->
@@ -48,4 +49,11 @@
   </div>
 </div>
 <?php include 'includes/modals.php';?>
+<script>
+  var backButton = document.getElementById("backButton");
+
+backButton.addEventListener("click", () => {
+  history.back();
+});
+</script>
 <?php include 'includes/footer.php';?>
